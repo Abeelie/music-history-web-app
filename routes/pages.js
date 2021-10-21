@@ -189,7 +189,6 @@ router.all("/charts", async function (req, res, next) {
 
 router.get("/events", async function (req, res, next) {
   try{
-      let results;
       const events_input = req.query.events_input || "Music";
       const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${events_input.trim()}&apikey=${ticketMasterKeys}`;
       const events = await axios.get(url);
@@ -205,7 +204,6 @@ router.get("/events", async function (req, res, next) {
 
 router.get("/news", async function (req, res, next) {
   try{
-      let results;
       const news_input = req.query.news_input || "Kanye west";
       const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${news_input.trim()}&api-key=${nyTimesNewsKeys}`;
       const music_news = await axios.get(url);
