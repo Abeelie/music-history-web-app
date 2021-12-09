@@ -80,7 +80,7 @@ router.get("/country", async function (req, res, next) {
 
 router.get("/artists", async function (req, res, next) {
   try{
-      const artists_input = req.query.artists_input || "rihanna";
+      const artists_input = req.query.artists_input || "";
       const url = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artists_input.trim()}`;
       const artists = await axios.get(url);
       
