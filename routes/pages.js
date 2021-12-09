@@ -80,8 +80,8 @@ router.get("/country", async function (req, res, next) {
 
 router.get("/artists", async function (req, res, next) {
   try{
-      const artists_input = req.query.artists_input ;
-      const url = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artists_input.trim()}`;
+      const artists_input = req.query.artists_input || "rihanna";
+      const url = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${artists_input.trim()}`;
       const artists = await axios.get(url);
       
       const url2 = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artists_input.trim()}&limit=10&api_key=${lastFMKey}&format=json`;
