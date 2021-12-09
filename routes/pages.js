@@ -80,7 +80,7 @@ router.get("/country", async function (req, res, next) {
 
 router.get("/artists", async function (req, res, next) {
   try{
-      const artists_input = req.query.artists_input || "beyonce";
+      const artists_input = req.query.artists_input || "rihanna";
       const url = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artists_input.trim()}`;
       const artists = await axios.get(url);
       
@@ -123,10 +123,10 @@ router.get("/songs", async function (req, res, next) {
       const url2 = `http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=${artist_input.trim()}&track=${song_input.trim()}&limit=10&api_key=${lastFMKey}&format=json`;
       const similarTracks = await axios.get(url2);
 
-      console.log(req.body)
+      // console.log(req.body)
       let content;
       if (track_data.data.track.wiki == undefined) {
-         content = "Background infomation not avaliable";
+         content = "Background information not avaliable";
       } else {
         content = track_data.data.track.wiki.content;
       }
